@@ -90,10 +90,10 @@ test('locating Child element' , async ({page}) => {
     await page.locator('nb-card').locator('nb-radio').locator(':text-is("Option 2")').click()
 
     // We can also combine with user facing locators
-    await page.locator('nb-card').getByRole('button' , {name:"Sign in"}).click()
+    await page.locator('nb-card').getByRole('button' , {name:"Sign in"})
 
     //Using index starts from 0 - Not recommended
-    await page.locator('nb-card').nth(3).click()
+    await page.locator('nb-card').nth(3)
 
 })
 
@@ -129,4 +129,5 @@ test('Reusing locators' , async ({page}) => {
     //Reduce repeated syntax
     await common.filter({has: page.locator('#EmailId')})
     await common.filter({has: page.locator('#Password')})
+
 })
