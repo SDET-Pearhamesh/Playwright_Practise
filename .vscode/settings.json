@@ -1,4 +1,10 @@
 {
     "typescript.tsdk": "./node_modules/typescript/lib",
-    "tslint.enable": false
+    "tslint.enable": false,
+    "playwright.reuseBrowser": false,
+    "playwright.showTrace": false,
+    "files.associations": {
+        "*.spec.ts": "typescript"
+    },
+    "playwright.testIdAttribute": "data-testid"
 }

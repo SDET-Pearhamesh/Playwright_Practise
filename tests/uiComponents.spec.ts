@@ -120,3 +120,38 @@ for(const color in colors){
 }
 
 })
+
+
+test('Hover effect' , async ({page}) => {
+
+    await page.getByText('Modal & Overlays').click()
+    await page.getByText('Tooltip').click()
+
+    const toolTipCard = page.locator('nb-card' , {hasText: "Tooltip Placements"})
+
+    await toolTipCard.getByRole('button' , {name: "Top"}).hover() //To hove on the webelement
+
+    page.getByRole('tooltip') // if you have a role tooltip created
+
+    const tooltip = await page.locator('nb-tooltip').textContent() // Verify the tool tip text
+    expect(tooltip).toEqual('This is a tooltip')
+
+
+})
+
+test('Dailog box and Alerts' , async ({page}) => {
+
+    await page.getByText('Tables & Data').click()
+    await page.getByText('Smart Table').click()
+
+    page.on('dialog' , async dialog =>{
+
+        console.log(dialog.message()); // this will print the message in the dailog
+        await dialog.accept() // To accept 
+        await dialog.dismiss() // To dimiss
+
+    })
+
+    await page.getByRole('table').locator('tr' , {hasText: "fat@yandex.ru"}).locator(".nb-trash").click()
+
+})
